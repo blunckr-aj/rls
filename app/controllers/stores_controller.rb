@@ -1,5 +1,14 @@
 class StoresController < ApplicationController
-  before_action :set_store, only: %i[ show edit update destroy ]
+  before_action :set_store, only: %i[ show edit update destroy select ]
+
+  def select
+    session[:store_id] = @store.id
+
+    respond_to do |format|
+      format.html { redirect_to store_url(@store), notice: "Selected store" }
+      format.json { head :no_content }
+    end
+  end
 
   # GET /stores or /stores.json
   def index

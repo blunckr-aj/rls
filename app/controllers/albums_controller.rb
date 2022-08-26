@@ -22,6 +22,7 @@ class AlbumsController < ApplicationController
   # POST /albums or /albums.json
   def create
     @album = Album.new(album_params)
+    @album.store_id = session[:store_id]
 
     respond_to do |format|
       if @album.save
@@ -65,6 +66,6 @@ class AlbumsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:name, :artist, :store_id)
+      params.require(:album).permit(:name, :artist)
     end
 end

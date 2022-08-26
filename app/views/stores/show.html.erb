@@ -7,4 +7,5 @@
   <%= link_to "Back to stores", stores_path %>
 
   <%= button_to "Destroy this store", @store, method: :delete %>
+  <%= button_to "Select this store", select_store_path(@store), method: :post %>
 </div>

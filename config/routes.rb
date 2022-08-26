@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  resources :stores
   root to: 'home#home'
+
+  resources :stores do
+    post :select, on: :member
+  end
   resources :albums
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
